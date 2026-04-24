@@ -1,0 +1,33 @@
+# Sensitive client data
+# Add specific files or patterns that contain confidential information
+
+# Personal notes (if you keep separate personal notes)
+personal/
+private/
+
+# Backup files
+*.bak
+*~
+.DS_Store
+
+# Editor files
+.vscode/settings.json
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Optional: Uncomment to exclude all raw sources from version control
+# This is useful if raw/ contains sensitive meeting notes or contracts
+# raw/
+
+# Optional: Uncomment to exclude specific client data
+# raw/*-confidential.md
+# wiki/*-Confidential-*.md
+
+# Optional: Uncomment to keep daily logs private
+# raw/daily/
+
+# System files
+Thumbs.db
