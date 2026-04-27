@@ -1,22 +1,3 @@
-# Wiki Activity Log
-
-This file tracks all wiki operations (ingests, queries, lint checks) in chronological order.
-
-## Format
-
-Each entry should follow this concise format (2-5 lines):
-
-```
-## [YYYY-MM-DD] action | Source Title
-Pages updated: Page1.md, Page2.md, Page3.md
-Key insights: 1-2 sentence summary of most important findings
-Statistics: X sources, Y pages, Z contacts (only if changed)
-```
-
----
-
-## Example Entries
-
 ## [2024-03-15] ingest | Client XYZ Q2 Planning Meeting
 Pages updated: Client-XYZ.md, Product-A.md, Contact-John-Smith.md, index.md
 Key insights: $500K expansion opportunity for Product A, decision by April 30, technical POC needed
@@ -34,7 +15,3 @@ Key insights: Updated stale opportunity stages, added missing cross-references b
 ## [2024-03-22] query | Which clients are evaluating Product A?
 No pages updated (query only)
 Key insights: 3 active evaluations identified, 2 in technical validation stage
-
----
-
-## Your Activity Log Starts Here
