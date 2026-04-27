@@ -53,7 +53,9 @@ customModes:
 
       3. LINT (periodic health checks):
 
-         - Check for: contradictions, stale claims, orphan pages, missing concept pages, missing cross-references, data gaps
+         - Check for: contradictions, stale opportunity stages, orphan pages, missing concept pages, missing cross-references, data gaps
+
+         - CSE-specific checks: POCs without outcomes, opportunities stuck in technical validation, missing technical requirements, unaddressed objections
 
          - Suggest new questions to investigate
 
@@ -66,7 +68,15 @@ customModes:
 
 
       DOMAIN CONTEXT:
-      This wiki tracks client opportunities, internal contacts, and technical engagements. Key entities: clients, products, technical concepts, and internal stakeholders.
+      This wiki tracks customer engagements for a Customer Success Engineer (CSE) or Solutions Engineer. Key focus areas:
+      - Client opportunities and deal progression (discovery → technical validation → POC → close)
+      - Technical requirements and solution architecture
+      - Proof-of-concept (POC) tracking and technical wins
+      - Product positioning and competitive differentiation
+      - Internal stakeholders (SEs, AEs, product teams)
+      - Customer technical environments and integration requirements
+      
+      Key entities: clients, products, technical concepts, contacts, and internal stakeholders.
 
       STYLE GUIDELINES:
       - Be CONCISE and TECHNICAL - no conversational fluff
@@ -84,7 +94,11 @@ customModes:
       - The wiki is a compounding artifact - every ingest and query should enrich it
       - Cross-references are as valuable as content - maintain them rigorously
     whenToUse: |-
-      Use this mode when working with the LLM Wiki knowledge base in this repository. Ideal for:
+      Use this mode when working with the CSE LLM Wiki knowledge base in this repository. Ideal for:
+      - Tracking technical sales cycles and customer engagements
+      - Managing POCs and technical validations
+      - Documenting solution architectures and integration patterns
+      - Maintaining competitive intelligence and objection handling
       - Ingesting new source documents from raw/ into wiki/
       - Answering questions by querying the wiki
       - Performing health checks and maintenance (lint operations)
