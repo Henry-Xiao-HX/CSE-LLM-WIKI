@@ -2,6 +2,15 @@
 
 A template for building a persistent, interlinked knowledge base to track client opportunities, contacts, contracts, and technical engagements using Bob (or any LLM) following the LLM Wiki pattern.
 
+## Prerequisites
+
+Before getting started, you'll need:
+
+- **Bob AI Assistant** - Installed in VS Code ([Get Bob](https://bob.ibm.com/))
+
+Optional but recommended:
+- **Obsidian** - For visualizing your knowledge graph ([Download Obsidian](https://obsidian.md/))
+
 ## What is LLM Wiki?
 
 LLM Wiki is a pattern for maintaining a compounding knowledge base where:
@@ -12,11 +21,15 @@ LLM Wiki is a pattern for maintaining a compounding knowledge base where:
 
 ## Quick Start
 
-1. **Copy this template structure** to your project directory
-2. **Copy `.bob/custom_modes.yaml`** from this template
-3. **Customize domain context** in `.bob/custom_modes.yaml` (line 70) if needed
-4. **Start adding sources** to `raw/` (meeting notes, daily logs)
-5. **Tell Bob**: "Ingest raw/your-meeting-notes.md"
+1. Clone or copy this template to your project directory
+2. Verify `.bob/custom_modes.yaml` is present (already included in template)
+3. Switch Bob to CSE-LLM-WIKI mode:
+   - Open Bob
+   - Select "📚 CSE-LLM-WIKI" from the list of modes
+4. Customize domain context (optional): Edit `.bob/custom_modes.yaml` line 70 if needed
+5. Create your first source document in `raw/` (see `raw/SAMPLE-client-meeting.md` for inspiration)
+6. Tell Bob: "Ingest raw/your-meeting-notes.md"
+7. Bob will discuss key takeaways and ask for confirmation before creating wiki pages
 
 ## Directory Structure
 
@@ -101,64 +114,41 @@ Bob will:
 - Follow-ups completed
 - Decisions and insights
 
-## File Naming Conventions
 
-### Raw Sources
-- **Meeting notes**: `client-meeting-YYYY-MM-DD.md` or `ClientName-Topic-YYYY-MM-DD.md`
-- **Daily logs**: `YYYY-MM-DD.md` in `raw/daily/`
-- **Contracts**: `ClientName-Contract-YYYY-MM-DD.md`
-
-### Wiki Pages
-- **Clients**: `Client-Name.md` (Title-Case-With-Hyphens)
-- **Contacts**: `Contact-Name.md`
-- **Products**: `Product-Name.md`
-- **Technologies**: `Technology-Name.md`
-
-## Template Files Included
-
-### Configuration
-- `.bob/custom_modes.yaml` - Bob wiki mode configuration (copy to your `.bob/` directory)
-- `.gitignore` - Protect sensitive client data from version control
-
-### Templates
-- `TEMPLATE-index.md` - Content catalog structure
-- `TEMPLATE-log.md` - Activity log format with examples
-
-### Sample Raw Sources
-- `raw/SAMPLE-client-meeting.md` - Meeting notes template
-- `raw/daily/SAMPLE-daily-log.md` - Daily log template
-
-### Sample Wiki Pages
-- `wiki/SAMPLE-Client-Name.md` - Client page format
-- `wiki/SAMPLE-Contact-Name.md` - Contact page format
-- `wiki/SAMPLE-Technology-Name.md` - Technology/product page format
+**Note:** Don't create wiki files yourself. Bob will create actual wiki pages when you ingest your first source document.
 
 ## Setup Instructions
 
 ```bash
-# 1. Create directory structure
-mkdir -p raw/daily wiki .bob
+# 1. Clone or copy this template to your project directory
+# The directory structure is already set up for you
 
-# 2. Copy configuration
-cp custom_modes.yaml .bob/custom_modes.yaml
+# 2. Verify the structure exists
+ls -la  # Should see: .bob/, raw/, wiki/, TEMPLATE-*.md files
 
-# 3. Create initial files
+# 3. Create initial files from templates
 cp TEMPLATE-index.md index.md
 cp TEMPLATE-log.md log.md
 
-# 4. Customize index.md with your categories (optional)
+# 4. (Optional) Customize domain context in .bob/custom_modes.yaml
+# Edit line 70 if you want to change from CSE/tech sales focus
 
-# 5. Add your first source
-# Create raw/first-meeting-notes.md
+# 5. Create your first source document
+# Use raw/SAMPLE-client-meeting.md as inspiration
+# Example: raw/my-first-meeting-2024-03-15.md
 
-# 6. Start Bob in Wiki mode and ingest
-# "Ingest raw/first-meeting-notes.md"
+# 6. Open Bob and switch to CSE-LLM-WIKI mode
+# In Bob, select "📚 CSE-LLM-WIKI" from modes list
+
+# 7. Start your first ingest
+# Tell Bob: "Ingest raw/my-first-meeting-2024-03-15.md"
+# Bob will read it, discuss findings, and create wiki pages
 ```
 
 ## Best Practices
 
 ### Source Management
-- Keep raw sources **immutable** - never edit after creation
+- Keep raw sources **immutable** 
 - Use consistent date format: YYYY-MM-DD
 - Capture meeting notes same day while fresh
 - Daily logs help track activities and compound knowledge
@@ -167,7 +157,6 @@ cp TEMPLATE-log.md log.md
 - Use relative links: `[Client Name](wiki/Client-Name.md)`
 - Link liberally - connections are valuable
 - Update opportunity stages regularly
-- Keep contract renewal dates current
 - Run lint every 10-20 ingests
 
 ### Cross-Referencing
@@ -176,35 +165,45 @@ cp TEMPLATE-log.md log.md
 - Technology pages link to clients using them
 - Meeting notes create/update multiple pages
 
-## Example Session
+## First Ingest Walkthrough
+
+Here's what happens when you ingest your first document:
 
 ```
 User: "Ingest raw/acme-corp-meeting-2024-03-15.md"
 
-Bob: [Reads meeting notes]
+Bob: [Reads the meeting notes]
 
-Key takeaways:
-- Acme Corp evaluating Product X for data integration
-- $500K opportunity, decision by April 30
+Key takeaways from the meeting:
+- Acme Corp is evaluating Product X for data integration
+- $500K opportunity, decision timeline: April 30
 - Technical POC needed with their Salesforce environment
-- John Smith (CTO) is champion, Mary Johnson (VP Eng) has concerns about complexity
+- John Smith (CTO) is the champion
+- Mary Johnson (VP Eng) has concerns about complexity
 
-I'll create/update:
+I'll create/update these wiki pages:
 - wiki/Acme-Corp.md (new client page)
 - wiki/John-Smith.md (new contact)
 - wiki/Mary-Johnson.md (new contact)
 - wiki/Product-X.md (update with new use case)
 - wiki/Salesforce-Integration.md (update with requirements)
-- index.md (add new pages)
+- index.md (add new pages to catalog)
+- log.md (record this ingest)
 
-Proceed?
+Proceed with creating these pages?
 
 User: "Yes"
 
-Bob: [Creates 5 pages, updates index.md, appends to log.md]
+Bob: [Creates/updates pages with cross-references]
 
-Complete. 5 pages created, 12 cross-references added.
+✓ Created 3 new pages, updated 2 existing pages
+✓ Added 12 cross-references between related pages
+✓ Updated index.md with new entries
+✓ Logged activity to log.md
+
+Your wiki now has 5 pages with interconnected knowledge about Acme Corp.
 ```
+
 
 ## Obsidian Integration (Optional)
 
@@ -219,27 +218,17 @@ Complete. 5 pages created, 12 cross-references added.
 
 This wiki may contain confidential client information. Follow these guidelines:
 
-1. **Review `.gitignore`** - Customize to exclude sensitive files from version control
-2. **Consider excluding `raw/`** - Uncomment in `.gitignore` if meeting notes contain confidential data
-3. **Use generic names** - When sharing examples, anonymize client names
-4. **Separate repositories** - Consider separate wikis for different security levels
-5. **Access control** - Restrict repository access to authorized team members only
-
-### Recommended Practices
-
-- Don't commit API keys, passwords, or credentials
-- Redact sensitive financial details before committing
-- Use client codes instead of full names if required by policy
-- Review diffs before committing to catch accidental sensitive data
-- Consider encrypting the repository if it contains highly sensitive information
+1. Review `.gitignore` - Customize to exclude sensitive files from version control (Don't commit API keys, passwords, or credentials)
+2. Access control - Restrict repository access to authorized team members only. Consider encrypting the repository if it contains highly sensitive information
+3. Review diffs before committing to catch accidental sensitive data
 
 ## Tips for Success
 
-- **Start small**: Ingest 1-2 meeting notes to get comfortable
-- **Daily logs compound**: Even brief daily notes add up over time
-- **Query often**: Ask Bob questions to test your knowledge base
-- **Lint regularly**: Keep the wiki healthy as it grows (every 10-20 ingests)
-- **Cross-reference**: Connections are as valuable as content
-- **Review security**: Regularly audit what's being committed to version control
+- Start small: Ingest 1-2 meeting notes to get comfortable
+- Daily logs compound: Even brief daily notes add up over time
+- Query often: Ask Bob questions to test your knowledge base
+- Lint regularly: Keep the wiki healthy as it grows (every 10-20 ingests)
+- Cross-reference: Connections are as valuable as content
+- Review security: Regularly audit what's being committed to version control
 
 Your wiki becomes more valuable with every client interaction you capture.
